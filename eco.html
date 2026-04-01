@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EcoSpark - Smart Energy Dashboard</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: #333;
+        }
+
+        .container {
+            padding: 20px;
+        }
+
+        .header {
+            text-align: center;
+            color: white;
+        }
+
+        .stats {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .card {
+            flex: 1;
+            min-width: 120px;
+            background: white;
+            padding: 15px;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .alert {
+            background: #ffdddd;
+            padding: 10px;
+            margin-top: 20px;
+            border-left: 5px solid red;
+        }
+
+        button {
+            margin: 10px 5px;
+            padding: 10px;
+            border: none;
+            border-radius: 8px;
+            background: green;
+            color: white;
+            cursor: pointer;
+        }
+
+        canvas {
+            background: white;
+            border-radius: 10px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <!-- Header -->
+    <div class="header">
+        <h1>🌿 EcoSpark</h1>
+        <p>Smart Energy Dashboard</p>
+    </div>
+
+    <!-- Stats -->
+    <div class="stats">
+        <div class="card">
+            <h2>AC</h2>
+            <p>Top Consumer</p>
+        </div>
+
+        <div class="card">
+            <h2>₹50</h2>
+            <p>Today's Cost</p>
+        </div>
+
+        <div class="card">
+            <h2>12.5 kWh</h2>
+            <p>Usage</p>
+        </div>
+
+        <div class="card">
+            <h2>₹1200</h2>
+            <p>Monthly</p>
+        </div>
+    </div>
+
+    <!-- Alerts -->
+    <div class="alert">
+        ⚠️ AC using high energy<br>
+        ⚠️ Refrigerator inefficient
+    </div>
+
+    <!-- Buttons -->
+    <div>
+        <button onclick="alert('All devices OFF')">Turn OFF All</button>
+        <button onclick="alert('Eco Mode ON')">Eco Mode</button>
+        <button onclick="alert('Schedule Opened')">Schedule</button>
+    </div>
+
+    <!-- Chart -->
+    <canvas id="chart" height="200"></canvas>
+
+</div>
+
+<script>
+    const ctx = document.getElementById('chart');
+
+    new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: ['Mon','Tue','Wed','Thu','Fri','Sat','Sun'],
+            datasets: [{
+                label: 'Energy Usage (kWh)',
+                data: [8,10,12,9,11,13,12],
+                borderWidth: 2
+            }]
+        }
+    });
+</script>
+
+</body>
+</html>
