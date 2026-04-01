@@ -1,41 +1,123 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   
+    <title>Energy Chart</title>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-
-
-        canvas {
-            background: white;
-            border-radius: 10px;
-            margin-top: 20px;
+    <style>
+        .chart-container {
+            width: 100%;
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            font-family: sans-serif;
         }
+        h3 { text-align: center; color: #333; }
     </style>
 </head>
-
 <body>
-    <!-- Chart -->
-    <canvas id="chart" height="200"></canvas>
 
-</div>
+    <div class="chart-container">
+        <h3>📈 Weekly Usage Trend</h3>
+        <canvas id="usageChart"></canvas>
+    </div>
 
-<script>
-    const ctx = document.getElementById('chart');
+    <script>
+        const ctx = document.getElementById('usageChart').getContext('2d');
+        
+        new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+                datasets: [{
+                    label: 'Energy Usage (kWh)',
+                    data: [8.5, 10.2, 12.5, 9.8, 11.3, 13.2, 12.8],
+                    borderColor: '#4CAF50',
+                    backgroundColor: 'rgba(76, 175, 80, 0.1)',
+                    borderWidth: 3,
+                    tension: 0.4,
+                    fill: true,
+                    pointBackgroundColor: '#4CAF50',
+                    pointRadius: 4
+                }]
+            },
+            options: {
+                responsive: true,
+                scales: {
+                    y: { 
+                        beginAtZero: true,
+                        ticks: { callback: (value) => value + ' kWh' }
+                    }
+                },
+                plugins: {
+                    legend: { position: 'top' }
+                }
+            }
+        });
+    </script>
 
-    new Chart(ctx, {
-        type: 'line',
-        data: {
-            labels: ['Mon','Tue','Wed','Thu','Fri','Sat','Sun'],
-            datasets: [{
-                label: 'Energy Usage (kWh)',
-                data: [8,10,12,9,11,13,12],
-                borderWidth: 2
-            }]
+</body>
+</html><!DOCTYPE html>
+<html>
+<head>
+    <title>Energy Chart</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        .chart-container {
+            width: 100%;
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            font-family: sans-serif;
         }
-    });
-</script>
+        h3 { text-align: center; color: #333; }
+    </style>
+</head>
+<body>
+
+    <div class="chart-container">
+        <h3>📈 Weekly Usage Trend</h3>
+        <canvas id="usageChart"></canvas>
+    </div>
+
+    <script>
+        const ctx = document.getElementById('usageChart').getContext('2d');
+        
+        new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+                datasets: [{
+                    label: 'Energy Usage (kWh)',
+                    data: [8.5, 10.2, 12.5, 9.8, 11.3, 13.2, 12.8],
+                    borderColor: '#4CAF50',
+                    backgroundColor: 'rgba(76, 175, 80, 0.1)',
+                    borderWidth: 3,
+                    tension: 0.4,
+                    fill: true,
+                    pointBackgroundColor: '#4CAF50',
+                    pointRadius: 4
+                }]
+            },
+            options: {
+                responsive: true,
+                scales: {
+                    y: { 
+                        beginAtZero: true,
+                        ticks: { callback: (value) => value + ' kWh' }
+                    }
+                },
+                plugins: {
+                    legend: { position: 'top' }
+                }
+            }
+        });
+    </script>
 
 </body>
 </html>
